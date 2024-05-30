@@ -22,15 +22,17 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "Welcome To Flutter Firebase",
-          style: TextStyle(
-            color: Colors.blue,
-            fontWeight: FontWeight.bold,
+      body: Container(
+        color: Color(0xFFa090ff), // Set background color to black
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/logo-white.png"), // Display the logo image // Add some space between the logo and text
+            ],
           ),
         ),
       ),

@@ -32,10 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text("SignUp"),
-      ),
+      backgroundColor: Color(0xFFA090FF), // Background color
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -44,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               Text(
                 "Sign Up",
-                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold, color: Colors.black), // Text color
               ),
               SizedBox(
                 height: 30,
@@ -74,23 +71,29 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 30,
               ),
               GestureDetector(
-                onTap:  (){
+                onTap: () {
                   _signUp();
-
                 },
                 child: Container(
                   width: double.infinity,
                   height: 45,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.black, // Button background color
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
-                      child: isSigningUp ? CircularProgressIndicator(color: Colors.white,):Text(
-                    "Sign Up",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  )),
+                    child: isSigningUp
+                        ? CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                  ),
                 ),
               ),
               SizedBox(
@@ -99,23 +102,29 @@ class _SignUpPageState extends State<SignUpPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already have an account?"),
+                  Text(
+                    "Already have an account?",
+                    style: TextStyle(color: Colors.black), // Text color
+                  ),
                   SizedBox(
                     width: 5,
                   ),
                   GestureDetector(
-                      onTap: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()),
-                            (route) => false);
-                      },
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                            color: Colors.blue, fontWeight: FontWeight.bold),
-                      ))
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        (route) => false,
+                      );
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.white, // Button text color
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
                 ],
               )
             ],
@@ -126,10 +135,9 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void _signUp() async {
-
-setState(() {
-  isSigningUp = true;
-});
+    setState(() {
+      isSigningUp = true;
+    });
 
     String username = _usernameController.text;
     String email = _emailController.text;
@@ -137,14 +145,15 @@ setState(() {
 
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
-setState(() {
-  isSigningUp = false;
-});
+    setState(() {
+      isSigningUp = false;
+    });
+
     if (user != null) {
       showToast(message: "User is successfully created");
       Navigator.pushNamed(context, "/home");
     } else {
-      showToast(message: "Some error happend");
+      showToast(message: "Some error happened");
     }
   }
 }

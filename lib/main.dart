@@ -12,10 +12,10 @@ Future main() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: FirebaseOptions(
-        apiKey: "AIzaSyCsHDQtI9DItQgSqwy45_y2xG9tDGxuER8",
-        appId: "1:540215271818:web:8b22d4aee01acdce862873",
-        messagingSenderId: "540215271818",
-        projectId: "flutter-firebase-9c136",
+        apiKey: "AIzaSyBoZ2apQh_IYL8l4DQMANpnQamFPL0Kw9I",
+        appId: "1:675443914156:android:c2a92f06f3d9a7bb043609",
+        messagingSenderId: "675443914156",
+        projectId: "leadcentral-762c7",
         // Your web Firebase config options
       ),
     );
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Firebase',
+      title: 'LeadCentral',
       routes: {
         '/': (context) => SplashScreen(
           // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
